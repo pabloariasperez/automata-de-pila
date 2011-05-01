@@ -38,6 +38,7 @@ namespace Leer
            Console.WriteLine("Estados Finales: {0}", estadosFinales[0]);
            Console.ReadLine();
 
+
            
         }
     }
