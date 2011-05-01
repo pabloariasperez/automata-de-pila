@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
+//¡Qué bonito! Pero estás maaaal!!
+
 namespace Leer
 {
     class Automata
