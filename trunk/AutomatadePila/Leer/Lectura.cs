@@ -65,7 +65,6 @@ namespace Leer
                     }
     
                 }
-            Console.WriteLine(contador);
             return contador;
             
         }
