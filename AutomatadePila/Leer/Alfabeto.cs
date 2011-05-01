@@ -9,6 +9,9 @@ namespace Leer
     {
         private ArrayList elementos;
 
+        public static const char LAMBDA  = '$';
+        public static const char VACIO = '@';
+
         public Alfabeto(){
             this.elementos = new ArrayList();
         }
