@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -14,6 +15,7 @@ namespace Leer
            Automata auto;
            lectur = new Lectura();
            auto = new Automata();
+           ArrayList funcionesTransicion = new ArrayList();
            int x = lectur.numLinea();
            string [,] palabras = new string[x,10];
            string[] estadosIniciales;
@@ -26,24 +28,17 @@ namespace Leer
            estadosFinales = auto.estadosFinales(palabras,x);
            alfabetoLenguaje = auto.alfabetoLenguaje(palabras);
            alfabetoPila = auto.alfabetoPila(palabras);
+           funcionesTransicion = auto.funcioinesTransicion(palabras,x);
 
-           Console.WriteLine("{0}",estadosIniciales[0]);
-           Console.WriteLine("{0}",estadosFinales[0]);
-           Console.WriteLine("{0}",alfabetoLenguaje[0]);
-           Console.WriteLine("{0}",alfabetoPila[0]);
+           Console.WriteLine("Estados: {0}",estadosIniciales[0]);
+           Console.WriteLine("Alfabeto del Lenguaje: {0}",alfabetoLenguaje[0]);
+           Console.WriteLine("Alfabeto de Pila: {0}",alfabetoPila[0]);
+           Console.WriteLine("Funciones de Transición: ");
+           auto.PrintValues(funcionesTransicion);
+           Console.WriteLine("Estados Finales: {0}", estadosFinales[0]);
+           Console.ReadLine();
 
-
-
-           Console.WriteLine();
            
-           lectur.imprimirArreglo(x,palabras);
-           for (int i = 0; i < x; i++)
-           {
-               for (int j = 0; j < 1; j++)
-               {
-                   lectur.Separar(palabras[i, j]);
-               }
-           }
         }
     }
 }

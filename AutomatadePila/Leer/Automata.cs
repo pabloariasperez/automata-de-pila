@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -35,7 +36,7 @@ namespace Leer
             {
                 if (palabra[x, 0].IndexOf("(") != -1)
                 {
-                    Console.WriteLine("Tiene (");
+                   
                 }
                 else
                 {
@@ -43,9 +44,31 @@ namespace Leer
                     break;
                 }
             }
-            Console.WriteLine("Estados Finales {0}", estados[0]);
+            
             return estados;
         }
+        public ArrayList funcioinesTransicion(string[,] palabra, int y)
+        {
+            ArrayList estados = new ArrayList();
+             for (int x = 3; x < y; x++)
+            {
+                if (palabra[x, 0].IndexOf("(") != -1)
+                {
+                    
+                    estados.Add(palabra[x,0]);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return estados;
+        }
+        public void PrintValues( IEnumerable myList )  {
+            foreach ( Object obj in myList )
+            Console.WriteLine( "{0}", obj );
+   }
+
+}
 
     }
-}
