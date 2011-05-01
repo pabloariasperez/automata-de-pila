@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Leer
 {
@@ -10,14 +11,16 @@ namespace Leer
     {
         public void Separar(string text)
         {
-            char[] delimiterChars = {',','(',')','=','{','}'};
+            char[] delimiterChars = {',','(',')','=','{','}',' '};
             string[] words = text.Split(delimiterChars);
             System.Console.WriteLine("Original text: '{0}'", text);
             System.Console.WriteLine("{0} words in text:", words.Length);
-
             foreach (string s in words)
             {
-                System.Console.WriteLine(s);
+                if (s.Trim() != "")
+                {
+                    Console.WriteLine(s);
+                }
             }
             System.Console.ReadLine();
 
