@@ -37,7 +37,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alfabeto.cs" />
     <Compile Include="Automata.cs" />
+    <Compile Include="ConjuntoDeEstados.cs" />
+    <Compile Include="Estado.cs" />
+    <Compile Include="EstadosManager.cs" />
     <Compile Include="Maine.cs" />
     <Compile Include="Lectura.cs" />
   </ItemGroup>
