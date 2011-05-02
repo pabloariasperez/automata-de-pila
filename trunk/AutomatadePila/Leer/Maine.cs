@@ -12,6 +12,7 @@ namespace Leer
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("* Automata de Pila v0.1, Desarrollado por: Pablo Arias y César Machuca * \n");
             Lectura lectur;
             Automata auto;
             Alfabeto alfabetoLenguaje = new Alfabeto();
@@ -42,9 +43,9 @@ namespace Leer
             listaFinales = Separar(estadosFinales[0]);
             listaAlfaLenguaje = SepararString(StringalfabetoLenguaje[0]);
             listaAlfaPila = SepararString(StringAlfabetoPila[0]);
-            
 
 
+            Console.WriteLine("Datos obtenidos desde el archivo Text.txt: \n");
             Console.WriteLine("Estados: {0}", estadosIniciales[0]);
             Console.WriteLine("Alfabeto del Lenguaje: {0}", StringalfabetoLenguaje[0]);
             Console.WriteLine("Alfabeto de Pila: {0}", StringAlfabetoPila[0]);
@@ -82,9 +83,10 @@ namespace Leer
             Console.WriteLine("Escriba la palabra a procesar: ");
             String word = obtenerPalabra();
             Console.ReadLine();
+            Console.WriteLine("DESCRIPCIÓN INSTANTANEA: \n ");
             ProcesadorPalabra demo = new ProcesadorPalabra(funciones, estadosManager, alfabetoLenguaje, alfabetoPila);
             demo.probarPalabra(word);
-            Console.WriteLine("Presiona Cualquier Tecla para salir.");
+            Console.WriteLine("Presiona Enter para salir.");
             Console.ReadLine();
 
 
