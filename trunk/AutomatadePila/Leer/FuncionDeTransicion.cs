@@ -24,10 +24,14 @@ namespace Leer
         }
 
 
-        public string toString(){
+        public override string ToString()
+        {
             string toString;
             toString = "Estado condición: " + this.estadoCondicion + "\n";
             toString += "Elemento condición: " + this.elementoCondicion + "\n";
+            toString += "Tope de pila: " + this.elementoCondicionTopeDePila + "\n";
+            toString += "Nuevo Estado: " + this.nuevoEstado + "\n";
+            toString += "Cambio en la pila: " + this.elementoMeterEnPila + "\n\n";
             return toString;
         }
     }
