@@ -136,11 +136,11 @@ namespace Leer
 
             if (seAceptaLaPalabra)
             {
-                Console.WriteLine("Sí se acepta la palabra " + palabraAProbar + " =D ");
+                Console.WriteLine("Sí se acepta la palabra " +"'" +palabraAProbar +"'" + " =)");
             }
             else
             {
-                Console.WriteLine("No se acepta la palabra " + palabraAProbar + " =C ");
+                Console.WriteLine("No se acepta la palabra " + "'" + palabraAProbar + "'" + " =(");
             }
 
             Console.ReadLine();

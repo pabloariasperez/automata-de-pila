@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 
+
 namespace Leer
 {
     public class Maine
@@ -78,15 +79,13 @@ namespace Leer
             {
                 funciones.Add(Lectura.LeerString(funcion));
             }
-
+            Console.WriteLine("Escriba la palabra a procesar: ");
+            String word = obtenerPalabra();
+            Console.ReadLine();
             ProcesadorPalabra demo = new ProcesadorPalabra(funciones, estadosManager, alfabetoLenguaje, alfabetoPila);
-            demo.probarPalabra("baba");
-            Console.WriteLine("---------------------");
-            demo.probarPalabra("aba");
-            Console.WriteLine("---------------------");
-            demo.probarPalabra("bbaa");
-            Console.WriteLine("---------------------");
-            demo.probarPalabra("aabb");
+            demo.probarPalabra(word);
+            Console.WriteLine("Presiona Cualquier Tecla para salir.");
+            Console.ReadLine();
 
 
         }
@@ -121,6 +120,21 @@ namespace Leer
                 }
             }
             return lista;
+        }
+        public static string obtenerPalabra() 
+        {
+            string palabra;
+            palabra = Console.ReadLine();
+            while (palabra == "")
+            {
+                Console.WriteLine("ERROR: PALABRA NO VALIDA");
+                Console.WriteLine("Escriba una palabra valida: ");
+                palabra = Console.ReadLine();
+            }
+
+            return palabra;
+
+            
         }
     }
 }
