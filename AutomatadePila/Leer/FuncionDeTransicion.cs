@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
 namespace Leer
 {
-    class FuncionDeTransicion
+    public class FuncionDeTransicion
     {
         private Estado estadoCondicion;
         private char elementoCondicion;
@@ -24,5 +24,11 @@ namespace Leer
         }
 
 
+        public string toString(){
+            string toString;
+            toString = "Estado condición: " + this.estadoCondicion + "\n";
+            toString += "Elemento condición: " + this.elementoCondicion + "\n";
+            return toString;
+        }
     }
 }
