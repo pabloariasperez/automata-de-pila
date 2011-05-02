@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -7,11 +8,11 @@ namespace Leer
 {
     public class ConjuntoDeEstados
     {
-        private ArrayList estados;
+        private List<Estado> estados;
 
         public ConjuntoDeEstados()
         {
-            this.estados = new ArrayList();
+            this.estados = new List<Estado>();
         }
 
         public bool existeEstado(Estado estado)
@@ -31,10 +32,19 @@ namespace Leer
         {
             return estados.Count;
         }
-
-        public int getEstado(int num)
+        public override string ToString()
         {
-            return 1;
+            string tustring = "";
+            foreach (Estado e in estados)
+            {
+                tustring += e.ToString() + ", ";
+            }
+            return tustring;
         }
+
+        /*public int getEstado(int num)
+        {
+            estados.
+        }*/
     }
 }
