@@ -30,7 +30,6 @@ namespace Leer
            alfabetoPila = auto.alfabetoPila(palabras);
            funcionesTransicion = auto.funcioinesTransicion(palabras,x);
 
-           lectur.Separar((string)funcionesTransicion[0]);
            Console.WriteLine("Estados: {0}",estadosIniciales[0]);
            Console.WriteLine("Alfabeto del Lenguaje: {0}",alfabetoLenguaje[0]);
            Console.WriteLine("Alfabeto de Pila: {0}",alfabetoPila[0]);
@@ -38,10 +37,23 @@ namespace Leer
            auto.PrintValues(funcionesTransicion);
            Console.WriteLine("Estados Finales: {0}", estadosFinales[0]);
            Console.ReadLine();
+
+           ArrayList funciones = new ArrayList();
+           foreach (string funcion in funcionesTransicion)
+           {
+               funciones.Add( Lectura.LeerString( funcion ) );
+           }
+
+           Console.WriteLine((FuncionDeTransicion)funciones[0]);
+           Console.WriteLine((FuncionDeTransicion)funciones[1]);
+           Console.WriteLine((FuncionDeTransicion)funciones[2]);
+
            
 
 
+           Console.ReadLine();
            
+
         }
     }
 }

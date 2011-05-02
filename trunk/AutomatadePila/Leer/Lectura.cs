@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.IO;
@@ -9,21 +9,40 @@ namespace Leer
 {
     public class Lectura
     {
-        public void Separar(string text)
+        public static FuncionDeTransicion LeerString(string text)
         {
-            char[] delimiterChars = {',','(',')','=','{','}',' '};
+            Estado estadoCondicion;
+            char elementoCondicion;
+            char elementoCondicionTopeDePila;
+
+            Estado nuevoEstado;
+            char elementoMeterEnPila;
+
+            char[] delimiterChars = { ',', '(', ')', '=', '{', '}', ' ' };
+
             string[] words = text.Split(delimiterChars);
             System.Console.WriteLine("Original text: '{0}'", text);
             System.Console.WriteLine("{0} words in text:", words.Length);
+
+            ArrayList lineas = new ArrayList();
+
             foreach (string s in words)
             {
                 if (s.Trim() != "")
                 {
-                    Console.WriteLine(s);
+                    lineas.Add(s);
                 }
             }
-            System.Console.ReadLine();
 
+            estadoCondicion = new Estado(((string)(lineas[0])).ToCharArray()[0] - '0');
+            elementoCondicion = ((string)(lineas[1])).ToCharArray()[0];
+            elementoCondicionTopeDePila = ((string)(lineas[2])).ToCharArray()[0];
+
+            nuevoEstado = new Estado(((string)(lineas[3])).ToCharArray()[0] - '0');
+            elementoMeterEnPila = ((string)(lineas[4])).ToCharArray()[0];
+
+            FuncionDeTransicion funcion = new FuncionDeTransicion(estadoCondicion, nuevoEstado, elementoCondicion, elementoCondicionTopeDePila, elementoMeterEnPila);
+            return funcion;
         }
 
         public string [,] leerArchivo(int x)

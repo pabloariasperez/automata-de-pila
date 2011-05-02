@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leer
 {
-    class Estado  : IComparable
+    public class Estado  : IComparable
     {
         private int num;
 
