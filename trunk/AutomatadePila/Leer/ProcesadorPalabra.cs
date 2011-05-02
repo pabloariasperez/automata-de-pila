@@ -38,8 +38,21 @@ namespace Leer
             }
             
             this.elementoActual = palabra.Pop();
+            char[] letras = palabra.ToArray();
+            Console.Write("(" + this.estadoActual + ", ");
+            foreach (char c in letras)
+            {
+                Console.Write(c + " ");
+            }
+            Console.Write(", ");
+            char[] pila = pilaDeAutomata.ToArray();
+            foreach (char c in pila)
+            {
+                Console.Write(c + ", ");
+            }
+            Console.Write(") |-");
 
-            Console.WriteLine("Estado:" + this.estadoActual);
+            /*Console.WriteLine("Estado:" + this.estadoActual);
             Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
             Console.WriteLine("Letra Palabra Actual:" + this.elementoActual);
             if (palabra.Count != 0)
@@ -51,7 +64,7 @@ namespace Leer
                 Console.WriteLine("Peek de Pila:" + this.pilaDeAutomata.Peek());
             }
             Console.WriteLine("PilaSize:" + this.pilaDeAutomata.Count);
-            Console.WriteLine("PalabraSize:" + palabra.Count);
+            Console.WriteLine("PalabraSize:" + palabra.Count);*/
 
             for (int indexElement = 0; indexElement < funcionDeTransicion.Count; indexElement++)
             {
@@ -83,8 +96,8 @@ namespace Leer
 
                         if (esTopeDePilaActualLaCondicion || esLambdaCondicionDePila)
                         {
-                            Console.WriteLine("\n---CAMBIO DE ESTADO---\n");
-                            Console.WriteLine(funcionEnCurso);
+                            //Console.WriteLine("\n---CAMBIO DE ESTADO---\n");
+                            //Console.WriteLine(funcionEnCurso);
 
                             this.estadoActual = funcionEnCurso.nuevoEstado;
                             if (!esLambdaCondicionDePila && this.pilaDeAutomata.Count != 0)
@@ -106,9 +119,21 @@ namespace Leer
                                 this.elementoActual = palabra.Pop();
                             }
 
-
-
-                            Console.WriteLine("Estado:" + this.estadoActual);
+                            char[] letras2 = palabra.ToArray();
+                            Console.Write("(" + this.estadoActual + ", " );
+                            foreach (char c in letras2)
+                            {
+                                Console.Write(c + " ");
+                            }
+                            Console.Write(", ");
+                            char[] pila2 = pilaDeAutomata.ToArray();
+                            foreach (char c in pila2)
+                            {
+                                Console.Write(c + ", ");
+                            }
+                            Console.Write(") |- ");
+                            
+                            /*Console.WriteLine("Estado:" + this.estadoActual);
                             Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
                             Console.WriteLine("Letra Palabra Actual:" + this.elementoActual);
                             if (palabra.Count != 0)
@@ -121,6 +146,7 @@ namespace Leer
                             }
                             Console.WriteLine("PilaSize:" + this.pilaDeAutomata.Count);
                             Console.WriteLine("PalabraSize:" + palabra.Count);
+                             */
                         }
                     }
                 }
