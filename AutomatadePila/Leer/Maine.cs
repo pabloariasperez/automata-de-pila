@@ -25,6 +25,7 @@ namespace Leer
             List<char> listaAlfaLenguaje;
             List<char> listaAlfaPila;
             EstadosManager estadosManager = new EstadosManager();
+            bool wii = false;
 
             int x = lectur.numLinea();
             string[,] palabras = new string[x, 10];
@@ -33,6 +34,7 @@ namespace Leer
             string[] StringAlfabetoPila;
             string[] estadosFinales;
             palabras = lectur.leerArchivo(x);
+            String word;
 
             estadosIniciales = auto.estadosIniciales(palabras);
             estadosFinales = auto.estadosFinales(palabras, x);
@@ -63,7 +65,12 @@ namespace Leer
                 estadosManager.declararEstadoFinal(i);
             }
 
-            estadosManager.declararEstadoInicial(1);
+            Console.WriteLine("Escribe tu estado inicial: ");
+            string ini = Console.ReadLine();
+            int inicial = int.Parse(ini);
+            Console.WriteLine();
+
+            estadosManager.declararEstadoInicial(inicial);
 
             foreach (char c in listaAlfaLenguaje)
             {
@@ -80,12 +87,38 @@ namespace Leer
             {
                 funciones.Add(Lectura.LeerString(funcion));
             }
-            Console.WriteLine("Escriba la palabra a procesar: ");
-            String word = obtenerPalabra();
-            Console.ReadLine();
-            Console.WriteLine("DESCRIPCIÓN INSTANTANEA: \n ");
+
             ProcesadorPalabra demo = new ProcesadorPalabra(funciones, estadosManager, alfabetoLenguaje, alfabetoPila);
-            demo.probarPalabra(word);
+            while (wii == false)
+            {
+                Console.WriteLine("Escriba la palabra a procesar: ");
+                word = obtenerPalabra();
+                Console.ReadLine();
+                Console.WriteLine("DESCRIPCIÓN INSTANTANEA: \n ");
+                demo.probarPalabra(word);
+                Console.WriteLine("¿Quiére usar otra palabar? (y/n)");
+                string respuesta = Console.ReadLine();
+                switch (respuesta)
+                {
+                    case "y":
+                        wii = false;
+                        Console.WriteLine();
+                        break;
+                    case "n":
+                        wii = true;
+                        Console.WriteLine();
+                        break;
+                    default:
+                        wii = true;
+                        Console.WriteLine("ERROR: Opción Invalida");
+                        break;
+                }
+
+
+
+            }
+
+            
             Console.WriteLine("Presiona Enter para salir.");
             Console.ReadLine();
 

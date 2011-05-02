@@ -24,7 +24,7 @@ namespace Leer
             this.estados.agregarEstado(nuevoEstado);
         }
 
-        public void declararEstadoInicial( int num)
+        public void declararEstadoInicial(int num)
         {
             Estado nuevoEstado = new Estado(num);
             this.estadosIniciales.agregarEstado(nuevoEstado);

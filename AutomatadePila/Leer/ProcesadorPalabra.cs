@@ -33,24 +33,26 @@ namespace Leer
             bool seAceptaLaPalabra = false;
             this.estadoActual = this.estadosManager.getEstadoInicial();
             Stack<char> palabra = new Stack<char>();
+            char[] letras;
+            char[] pila;
             for( int c = palabraAProbar.Length-1; c>=0; c--){
                 palabra.Push(palabraAProbar[c]);
             }
             
             this.elementoActual = palabra.Pop();
-            char[] letras = palabra.ToArray();
-            Console.Write("(" + this.estadoActual + ", ");
+            letras = palabra.ToArray();
+            Console.Write("(" + this.estadoActual + ",");
             foreach (char c in letras)
             {
                 Console.Write(c + " ");
             }
             Console.Write(", ");
-            char[] pila = pilaDeAutomata.ToArray();
+            pila = pilaDeAutomata.ToArray();
             foreach (char c in pila)
             {
-                Console.Write(c + ", ");
+                Console.Write(c + ",");
             }
-            Console.Write(") |-");
+            Console.Write(") |- ");
 
             /*Console.WriteLine("Estado:" + this.estadoActual);
             Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
@@ -119,17 +121,17 @@ namespace Leer
                                 this.elementoActual = palabra.Pop();
                             }
 
-                            char[] letras2 = palabra.ToArray();
-                            Console.Write("(" + this.estadoActual + ", " );
-                            foreach (char c in letras2)
+                            letras = palabra.ToArray();
+                            Console.Write("(" + this.estadoActual + "," );
+                            foreach (char c in letras)
                             {
                                 Console.Write(c + " ");
                             }
-                            Console.Write(", ");
-                            char[] pila2 = pilaDeAutomata.ToArray();
-                            foreach (char c in pila2)
+                            Console.Write(",");
+                            pila = pilaDeAutomata.ToArray();
+                            foreach (char c in pila)
                             {
-                                Console.Write(c + ", ");
+                                Console.Write(c + ",");
                             }
                             Console.Write(") |- ");
                             
@@ -162,10 +164,12 @@ namespace Leer
 
             if (seAceptaLaPalabra)
             {
+                
                 Console.WriteLine("\nSí se acepta la palabra " +"'" +palabraAProbar +"'" + " =)");
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("\nNo se acepta la palabra " + "'" + palabraAProbar + "'" + " =(");
             }
 
