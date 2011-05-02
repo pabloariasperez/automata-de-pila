@@ -49,7 +49,7 @@ namespace Leer
             try
             {
                 //./../../Text.txt
-                using (StreamReader sr = new StreamReader("//./../../Text.txt"))
+                using (StreamReader sr = new StreamReader("./../../Text.txt"))
                 {
                     String line;
                     while ((line = sr.ReadLine()) != null)
@@ -76,7 +76,7 @@ namespace Leer
         public int numLinea()
         {
             int contador = 0;
-            using (StreamReader sr = new StreamReader("//./../../Text.txt"))
+            using (StreamReader sr = new StreamReader("./../../Text.txt"))
                 {
                     String line;
                     while ((line = sr.ReadLine()) != null)
