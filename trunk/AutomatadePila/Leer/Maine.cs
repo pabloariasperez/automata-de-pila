@@ -71,21 +71,22 @@ namespace Leer
             {
                 alfabetoPila.agregarElemento(c);
             }
-            Console.WriteLine("WIIII");
-            Console.WriteLine(estadosManager.estados);
-            Console.WriteLine(estadosManager.estadosFinales);
-            Console.WriteLine(estadosManager.estadosIniciales);
-            Console.WriteLine(alfabetoLenguaje);
-            Console.WriteLine(alfabetoPila);
-
-
+            
+            
             List<FuncionDeTransicion> funciones = new List<FuncionDeTransicion>();
             foreach (string funcion in funcionesTransicion)
             {
                 funciones.Add(Lectura.LeerString(funcion));
             }
-            Console.WriteLine(funciones.ElementAt(0));
-            Console.ReadLine();
+
+            ProcesadorPalabra demo = new ProcesadorPalabra(funciones, estadosManager, alfabetoLenguaje, alfabetoPila);
+            demo.probarPalabra("baba");
+            Console.WriteLine("---------------------");
+            demo.probarPalabra("aba");
+            Console.WriteLine("---------------------");
+            demo.probarPalabra("bbaa");
+            Console.WriteLine("---------------------");
+            demo.probarPalabra("aabb");
 
 
         }

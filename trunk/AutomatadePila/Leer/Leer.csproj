@@ -45,6 +45,7 @@
     <Compile Include="FuncionDeTransicion.cs" />
     <Compile Include="Maine.cs" />
     <Compile Include="Lectura.cs" />
+    <Compile Include="ProcesadorPalabra.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Text.txt" />

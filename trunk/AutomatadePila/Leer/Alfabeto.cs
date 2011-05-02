@@ -9,7 +9,7 @@ namespace Leer
     {
         private List<char> elementos;
 
-        public const char LAMBDA  = '$';
+        public const char LAMBDA  = '*';
         public const char VACIO = '@';
 
         public Alfabeto(){

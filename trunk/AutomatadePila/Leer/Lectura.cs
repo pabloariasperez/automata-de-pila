@@ -21,9 +21,6 @@ namespace Leer
             char[] delimiterChars = { ',', '(', ')', '=', '{', '}', ' ' };
 
             string[] words = text.Split(delimiterChars);
-            System.Console.WriteLine("Original text: '{0}'", text);
-            System.Console.WriteLine("{0} words in text:", words.Length);
-
             ArrayList lineas = new ArrayList();
 
             foreach (string s in words)

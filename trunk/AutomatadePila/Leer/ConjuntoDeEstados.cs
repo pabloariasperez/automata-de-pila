@@ -8,7 +8,7 @@ namespace Leer
 {
     public class ConjuntoDeEstados
     {
-        private List<Estado> estados;
+        public List<Estado> estados;
 
         public ConjuntoDeEstados()
         {
@@ -46,5 +46,22 @@ namespace Leer
         {
             estados.
         }*/
+
+        public Estado getEstadoAt(int n)
+        {
+            return (Estado)this.estados[n];
+        }
+
+        public bool contengoA(Estado estado)
+        {
+            for (int c = 0; c < estados.Count; c++)
+            {
+                if (estados.ElementAt(c).CompareTo(estado) == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
