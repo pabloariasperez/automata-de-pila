@@ -7,12 +7,12 @@ namespace Leer
 {
     public class FuncionDeTransicion
     {
-        private Estado estadoCondicion;
-        private char elementoCondicion;
-        private char elementoCondicionTopeDePila;
+        public Estado estadoCondicion;
+        public char elementoCondicion;
+        public char elementoCondicionTopeDePila;
 
-        private Estado nuevoEstado;
-        private char elementoMeterEnPila;
+        public Estado nuevoEstado;
+        public char elementoMeterEnPila;
 
         public FuncionDeTransicion(Estado estadoCondicion, Estado nuevoEstado, char elementoCondicion, char elementoTopeDePila, char elementoMeterEnPila)
         {
@@ -27,11 +27,7 @@ namespace Leer
         public override string ToString()
         {
             string toString;
-            toString = "Estado condición: " + this.estadoCondicion + "\n";
-            toString += "Elemento condición: " + this.elementoCondicion + "\n";
-            toString += "Tope de pila: " + this.elementoCondicionTopeDePila + "\n";
-            toString += "Nuevo Estado: " + this.nuevoEstado + "\n";
-            toString += "Cambio en la pila: " + this.elementoMeterEnPila + "\n\n";
+            toString = "Función: ("+this.estadoCondicion+", "+this.elementoCondicion+", "+this.elementoCondicionTopeDePila+" ) => {( "+this.nuevoEstado+", "+this.elementoMeterEnPila+")}";
             return toString;
         }
     }

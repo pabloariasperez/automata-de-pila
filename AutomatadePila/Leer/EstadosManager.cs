@@ -35,6 +35,10 @@ namespace Leer
             Estado nuevoEstado = new Estado(num);
             this.estadosFinales.agregarEstado(nuevoEstado);
         }
-        
+
+        public Estado getEstadoInicial()
+        {
+            return estadosIniciales.getEstadoAt(0);
+        }
     }
 }
