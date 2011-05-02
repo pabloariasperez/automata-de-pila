@@ -7,9 +7,9 @@ namespace Leer
 {
     public class EstadosManager
     {
-        private ConjuntoDeEstados estados;
-        private ConjuntoDeEstados estadosIniciales;
-        private ConjuntoDeEstados estadosFinales;
+        public ConjuntoDeEstados estados;
+        public ConjuntoDeEstados estadosIniciales;
+        public ConjuntoDeEstados estadosFinales;
 
         public EstadosManager()
         {
@@ -35,5 +35,6 @@ namespace Leer
             Estado nuevoEstado = new Estado(num);
             this.estadosFinales.agregarEstado(nuevoEstado);
         }
+        
     }
 }

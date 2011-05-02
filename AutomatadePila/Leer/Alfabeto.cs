@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Leer
 {
-    class Alfabeto
+    public class Alfabeto
     {
-        private ArrayList elementos;
+        private List<char> elementos;
 
         public const char LAMBDA  = '$';
         public const char VACIO = '@';
 
         public Alfabeto(){
-            this.elementos = new ArrayList();
+            this.elementos = new List<char>();
         }
 
         public bool existeElemento(char elemento){
@@ -30,6 +30,15 @@ namespace Leer
         public int numeroElementos()
         {
             return elementos.Count;
+        }
+        public override string ToString()
+        {
+            string tustring = "";
+            foreach (char e in elementos)
+            {
+                tustring += e.ToString() + ", ";
+            }
+            return tustring;
         }
     }
 }
