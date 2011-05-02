@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leer
 {
-    class EstadosManager
+    public class EstadosManager
     {
         private ConjuntoDeEstados estados;
         private ConjuntoDeEstados estadosIniciales;

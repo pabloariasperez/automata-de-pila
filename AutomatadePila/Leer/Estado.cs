@@ -31,6 +31,11 @@ namespace Leer
                 throw new ArgumentException("El objeto dado no es de tipo Estado");
             }
         }
+
+        public override string ToString()
+        {
+            return this.num.ToString();
+        }
         
     }
 }

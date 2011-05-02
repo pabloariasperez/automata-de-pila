@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leer
 {
-    class ConjuntoDeEstados
+    public class ConjuntoDeEstados
     {
         private ArrayList estados;
 

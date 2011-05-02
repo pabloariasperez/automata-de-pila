@@ -38,15 +38,15 @@ namespace Leer
            Console.WriteLine("Estados Finales: {0}", estadosFinales[0]);
            Console.ReadLine();
 
+           EstadosManager estadosManager = new EstadosManager();
+
+
            ArrayList funciones = new ArrayList();
            foreach (string funcion in funcionesTransicion)
            {
                funciones.Add( Lectura.LeerString( funcion ) );
            }
 
-           Console.WriteLine((FuncionDeTransicion)funciones[0]);
-           Console.WriteLine((FuncionDeTransicion)funciones[1]);
-           Console.WriteLine((FuncionDeTransicion)funciones[2]);
 
            
 
