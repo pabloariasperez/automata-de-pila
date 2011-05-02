@@ -67,10 +67,20 @@ namespace Leer
 
             Console.WriteLine("Escribe tu estado inicial: ");
             string ini = Console.ReadLine();
-            int inicial = int.Parse(ini);
-            Console.WriteLine();
+            try
+            {
+                int inicial = int.Parse(ini);
+                Console.WriteLine();
+                estadosManager.declararEstadoInicial(inicial);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("ERROR FATAL: DATO INGRESADO NO ES UN NÚMERO! ");
+                Console.ReadLine();
+                Environment.Exit(1);
+            }
 
-            estadosManager.declararEstadoInicial(inicial);
+           
 
             foreach (char c in listaAlfaLenguaje)
             {

@@ -14,7 +14,7 @@ namespace Leer
 
         private Estado estadoActual;
         private char elementoActual;
-        private Stack<char> pilaDeAutomata;
+        Stack<char> pilaDeAutomata;
 
         public ProcesadorPalabra(List<FuncionDeTransicion> funciones,  EstadosManager estadosManager, Alfabeto alfabetoLenguaje, Alfabeto alfabetoPila )
         {
@@ -33,6 +33,7 @@ namespace Leer
             bool seAceptaLaPalabra = false;
             this.estadoActual = this.estadosManager.getEstadoInicial();
             Stack<char> palabra = new Stack<char>();
+            pilaDeAutomata.Clear();
             char[] letras;
             char[] pila;
             for( int c = palabraAProbar.Length-1; c>=0; c--){
@@ -162,6 +163,7 @@ namespace Leer
                 }
             }
 
+            Console.WriteLine();
             if (seAceptaLaPalabra)
             {
                 
