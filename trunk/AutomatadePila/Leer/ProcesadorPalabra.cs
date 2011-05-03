@@ -26,6 +26,7 @@ namespace Leer
 
             //VAlores de trabajo para la palabra
             this.pilaDeAutomata = new Stack<char>();
+
         }
 
         public void probarPalabra(string palabraAProbar)
@@ -67,21 +68,8 @@ namespace Leer
                     Console.Write(c + " ");
                 }
             }
-            this.elementoActual = palabra.Pop();
+            this.elementoActual = palabra.Peek();
 
-            /*Console.WriteLine("Estado:" + this.estadoActual);
-            Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
-            Console.WriteLine("Letra Palabra Actual:" + this.elementoActual);
-            if (palabra.Count != 0)
-            {
-                Console.WriteLine("Letra Palabra Tope Pila:" + palabra.Peek());
-            }
-            if (this.pilaDeAutomata.Count != 0)
-            {
-                Console.WriteLine("Peek de Pila:" + this.pilaDeAutomata.Peek());
-            }
-            Console.WriteLine("PilaSize:" + this.pilaDeAutomata.Count);
-            Console.WriteLine("PalabraSize:" + palabra.Count);*/
 
             for (int indexElement = 0; indexElement < funcionDeTransicion.Count; indexElement++)
             {
@@ -114,8 +102,6 @@ namespace Leer
 
                         if (esTopeDePilaActualLaCondicion || esLambdaCondicionDePila)
                         {
-                            //Console.WriteLine("\n---CAMBIO DE ESTADO---\n");
-                            //Console.WriteLine(funcionEnCurso);
                             Console.WriteLine(") |- ");
                             this.estadoActual = funcionEnCurso.nuevoEstado;
 
@@ -133,6 +119,16 @@ namespace Leer
 
                             //Como hubo cambio de estado, reiniciamos el indexElement para volver a repasar todas las funciones
                             indexElement = -1;
+
+                            if (palabra.Count != 0 && !esLambdaLaCondicion)
+                            {
+                                palabra.Pop();
+                            }
+
+                            if (palabra.Count > 0)
+                            {
+                                this.elementoActual = palabra.Peek();
+                            }
 
                             letras = palabra.ToArray();
                             Console.Write("(" + this.estadoActual + ", ");
@@ -160,30 +156,6 @@ namespace Leer
                                     Console.Write(c + " ");
                                 }
                             }
-
-                            if (palabra.Count != 0 && !esLambdaLaCondicion)
-                            {
-                                this.elementoActual = palabra.Pop();
-                            }else if( !esLambdaLaCondicion ){
-                                this.elementoActual = Alfabeto.VACIO;
-                            }
-
-                            
-                            
-                            /*Console.WriteLine("Estado:" + this.estadoActual);
-                            Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
-                            Console.WriteLine("Letra Palabra Actual:" + this.elementoActual);
-                            if (palabra.Count != 0)
-                            {
-                                Console.WriteLine("Letra Palabra Tope Pila:" + palabra.Peek());
-                            }
-                            if (this.pilaDeAutomata.Count != 0)
-                            {
-                                Console.WriteLine("Peek de Pila:" + this.pilaDeAutomata.Peek());
-                            }
-                            Console.WriteLine("PilaSize:" + this.pilaDeAutomata.Count);
-                            Console.WriteLine("PalabraSize:" + palabra.Count);
-                             */
                         }
                     }
                 }
