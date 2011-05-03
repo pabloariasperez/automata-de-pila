@@ -32,6 +32,13 @@ namespace Leer
         public void probarPalabra(string palabraAProbar)
         {
             bool seAceptaLaPalabra = false;
+            if (!palabraUsaAlfabeto(palabraAProbar))
+            {
+                Console.WriteLine("No se acepta. La palabra no respeta el alfabeto del lenguaje");
+                return;
+            }
+
+
             this.estadoActual = this.estadosManager.getEstadoInicial();
             Stack<char> palabra = new Stack<char>();
             pilaDeAutomata.Clear();
@@ -84,7 +91,8 @@ namespace Leer
                     //Pregunto si el Elemento Actual es el mismo que el Elemento Condición de la Función en curso
                     bool esLambdaLaCondicion = funcionEnCurso.elementoCondicion == Alfabeto.LAMBDA;
                     bool sonLoMismoActualYCondicion = this.elementoActual == funcionEnCurso.elementoCondicion;
-                    //Console.Write(this.elementoActual + " - " + sonLoMismoActualYCondicion);
+
+                    //Console.Write(funcionEnCurso.elementoCondicion + " - " + this.elementoActual);
 
                     if (esLambdaLaCondicion || sonLoMismoActualYCondicion)
                     {
@@ -129,6 +137,10 @@ namespace Leer
                             {
                                 this.elementoActual = palabra.Peek();
                             }
+                            else if (palabra.Count == 0)
+                            {
+                                this.elementoActual = Alfabeto.VACIO;
+                            }
 
                             letras = palabra.ToArray();
                             Console.Write("(" + this.estadoActual + ", ");
@@ -162,8 +174,7 @@ namespace Leer
 
                 if (this.estadosManager.estadosFinales.contengoA(this.estadoActual) == true &&
                         palabra.Count == 0 &&
-                        this.pilaDeAutomata.Count == 0 && 
-                        this.elementoActual != Alfabeto.VACIO
+                        this.pilaDeAutomata.Count == 0
                     )
                 {
                     seAceptaLaPalabra = true;
@@ -186,6 +197,18 @@ namespace Leer
 
             Console.ReadLine();
 
+        }
+
+        public bool palabraUsaAlfabeto( string palabra )
+        {
+            for (int c = 0; c < palabra.Length; c++)
+            {
+                if (!alfabetoLenguaje.contieneA(palabra[c]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         
     }

@@ -40,5 +40,17 @@ namespace Leer
             }
             return tustring;
         }
+
+        public bool contieneA(char elemento)
+        {
+            for (int c = 0; c < elementos.Count; c++)
+            {
+                if (elementos[c] == elemento)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
