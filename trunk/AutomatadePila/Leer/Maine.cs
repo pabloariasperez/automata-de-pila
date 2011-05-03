@@ -99,6 +99,7 @@ namespace Leer
             }
 
             ProcesadorPalabra demo = new ProcesadorPalabra(funciones, estadosManager, alfabetoLenguaje, alfabetoPila);
+
             while (wii == false)
             {
                 Console.WriteLine("Escriba la palabra a procesar: ");

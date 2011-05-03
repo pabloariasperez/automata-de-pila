@@ -40,20 +40,34 @@ namespace Leer
                 palabra.Push(palabraAProbar[c]);
             }
             
-            this.elementoActual = palabra.Pop();
+
             letras = palabra.ToArray();
             Console.Write("(" + this.estadoActual + ", ");
-            foreach (char c in letras)
+            if (palabra.Count == 0)
             {
-                Console.Write(c + " ");
+                Console.Write(Alfabeto.LAMBDA);
+            }
+            else
+            {
+                foreach (char c in letras)
+                {
+                    Console.Write(c + " ");
+                }
             }
             Console.Write(", ");
             pila = pilaDeAutomata.ToArray();
-            foreach (char c in pila)
+            if (pilaDeAutomata.Count == 0)
             {
-                Console.Write(c + " ");
+                Console.Write(Alfabeto.LAMBDA);
             }
-            Console.Write(") |- ");
+            else
+            {
+                foreach (char c in pila)
+                {
+                    Console.Write(c + " ");
+                }
+            }
+            this.elementoActual = palabra.Pop();
 
             /*Console.WriteLine("Estado:" + this.estadoActual);
             Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
@@ -81,9 +95,10 @@ namespace Leer
                 {
                     //Pregunto si el Elemento Actual es el mismo que el Elemento Condición de la Función en curso
                     bool esLambdaLaCondicion = funcionEnCurso.elementoCondicion == Alfabeto.LAMBDA;
-                    bool sonLoMismoActualYCondicion = this.elementoActual.CompareTo(funcionEnCurso.elementoCondicion) == 0;
+                    bool sonLoMismoActualYCondicion = this.elementoActual == funcionEnCurso.elementoCondicion;
+                    //Console.Write(this.elementoActual + " - " + sonLoMismoActualYCondicion);
 
-                    if (  esLambdaLaCondicion || sonLoMismoActualYCondicion )
+                    if (esLambdaLaCondicion || sonLoMismoActualYCondicion)
                     {
                         //Pregunto por la condición para el stack
                         bool esLambdaCondicionDePila = funcionEnCurso.elementoCondicionTopeDePila == Alfabeto.LAMBDA;
@@ -101,8 +116,10 @@ namespace Leer
                         {
                             //Console.WriteLine("\n---CAMBIO DE ESTADO---\n");
                             //Console.WriteLine(funcionEnCurso);
-
+                            Console.WriteLine(") |- ");
                             this.estadoActual = funcionEnCurso.nuevoEstado;
+
+
                             if (!esLambdaCondicionDePila && this.pilaDeAutomata.Count != 0)
                             {
                                 this.pilaDeAutomata.Pop();
@@ -117,24 +134,41 @@ namespace Leer
                             //Como hubo cambio de estado, reiniciamos el indexElement para volver a repasar todas las funciones
                             indexElement = -1;
 
-                            if (palabra.Count != 0 && !esLambdaLaCondicion)
-                            {
-                                this.elementoActual = palabra.Pop();
-                            }
-
                             letras = palabra.ToArray();
-                            Console.Write("(" + this.estadoActual + ", " );
-                            foreach (char c in letras)
+                            Console.Write("(" + this.estadoActual + ", ");
+                            if (palabra.Count == 0)
                             {
-                                Console.Write(c + " ");
+                                Console.Write(Alfabeto.LAMBDA);
+                            }
+                            else
+                            {
+                                foreach (char c in letras)
+                                {
+                                    Console.Write(c + " ");
+                                }
                             }
                             Console.Write(", ");
                             pila = pilaDeAutomata.ToArray();
-                            foreach (char c in pila)
+                            if (pilaDeAutomata.Count == 0)
                             {
-                                Console.Write(c + " ");
+                                Console.Write(Alfabeto.LAMBDA);
                             }
-                            Console.Write(") |- ");
+                            else
+                            {
+                                foreach (char c in pila)
+                                {
+                                    Console.Write(c + " ");
+                                }
+                            }
+
+                            if (palabra.Count != 0 && !esLambdaLaCondicion)
+                            {
+                                this.elementoActual = palabra.Pop();
+                            }else if( !esLambdaLaCondicion ){
+                                this.elementoActual = Alfabeto.VACIO;
+                            }
+
+                            
                             
                             /*Console.WriteLine("Estado:" + this.estadoActual);
                             Console.WriteLine("Es Estado final: " + this.estadosManager.estadosFinales.contengoA(this.estadoActual));
@@ -156,7 +190,9 @@ namespace Leer
 
                 if (this.estadosManager.estadosFinales.contengoA(this.estadoActual) == true &&
                         palabra.Count == 0 &&
-                        this.pilaDeAutomata.Count == 0)
+                        this.pilaDeAutomata.Count == 0 && 
+                        this.elementoActual != Alfabeto.VACIO
+                    )
                 {
                     seAceptaLaPalabra = true;
                     break;
@@ -164,7 +200,7 @@ namespace Leer
                 
             }
 
-            Console.WriteLine();
+            Console.WriteLine(")");
             if (seAceptaLaPalabra)
             {
                 
