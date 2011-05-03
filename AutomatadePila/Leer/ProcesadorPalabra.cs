@@ -16,7 +16,7 @@ namespace Leer
         private char elementoActual;
         Stack<char> pilaDeAutomata;
 
-        public ProcesadorPalabra(List<FuncionDeTransicion> funciones,  EstadosManager estadosManager, Alfabeto alfabetoLenguaje, Alfabeto alfabetoPila )
+        public ProcesadorPalabra(List<FuncionDeTransicion> funciones, EstadosManager estadosManager, Alfabeto alfabetoLenguaje, Alfabeto alfabetoPila)
         {
             //VAlores de DEFINICIÓN del autómata de pila
             this.funcionDeTransicion = funciones;
@@ -44,10 +44,11 @@ namespace Leer
             pilaDeAutomata.Clear();
             char[] letras;
             char[] pila;
-            for( int c = palabraAProbar.Length-1; c>=0; c--){
+            for (int c = palabraAProbar.Length - 1; c >= 0; c--)
+            {
                 palabra.Push(palabraAProbar[c]);
             }
-            
+
 
             letras = palabra.ToArray();
             Console.Write("(" + this.estadoActual + ", ");
@@ -86,7 +87,7 @@ namespace Leer
 
                 //Pregunto si el Estado Actual es el mismo que el Estado Condición de la función en curso.
                 bool sonElMismoEstadoActualCondicion = this.estadoActual.CompareTo(funcionEnCurso.estadoCondicion) == 0;
-                if ( sonElMismoEstadoActualCondicion )
+                if (sonElMismoEstadoActualCondicion)
                 {
                     //Pregunto si el Elemento Actual es el mismo que el Elemento Condición de la Función en curso
                     bool esLambdaLaCondicion = funcionEnCurso.elementoCondicion == Alfabeto.LAMBDA;
@@ -122,8 +123,8 @@ namespace Leer
                             bool esLambdaElElementoMeterEnPila = funcionEnCurso.elementoMeterEnPila == Alfabeto.LAMBDA;
                             if (!esLambdaElElementoMeterEnPila)
                             {
-                                this.pilaDeAutomata.Push( funcionEnCurso.elementoMeterEnPila );
-                            }                            
+                                this.pilaDeAutomata.Push(funcionEnCurso.elementoMeterEnPila);
+                            }
 
                             //Como hubo cambio de estado, reiniciamos el indexElement para volver a repasar todas las funciones
                             indexElement = -1;
@@ -180,14 +181,14 @@ namespace Leer
                     seAceptaLaPalabra = true;
                     break;
                 }
-                
+
             }
 
             Console.WriteLine(")");
             if (seAceptaLaPalabra)
             {
-                
-                Console.WriteLine("\nSí se acepta la palabra " +"'" +palabraAProbar +"'" + " =)");
+
+                Console.WriteLine("\nSí se acepta la palabra " + "'" + palabraAProbar + "'" + " =)");
             }
             else
             {
@@ -199,7 +200,7 @@ namespace Leer
 
         }
 
-        public bool palabraUsaAlfabeto( string palabra )
+        public bool palabraUsaAlfabeto(string palabra)
         {
             for (int c = 0; c < palabra.Length; c++)
             {
@@ -210,6 +211,7 @@ namespace Leer
             }
             return true;
         }
-        
+
     }
 }
+

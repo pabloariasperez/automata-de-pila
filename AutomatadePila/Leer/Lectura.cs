@@ -42,23 +42,23 @@ namespace Leer
             return funcion;
         }
 
-        public string [,] leerArchivo(int x)
+        public string[,] leerArchivo(int x)
         {
-            string [,] palabras = new string [x,10];
+            string[,] palabras = new string[x, 10];
             int contador = 0;
             try
             {
                 //./../../Text.txt
-                using (StreamReader sr = new StreamReader("./../../Text.txt"))
+                using (StreamReader sr = new StreamReader("Text.txt"))
                 {
                     String line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        for (int i = 0+contador; i < x; i++)
+                        for (int i = 0 + contador; i < x; i++)
                         {
                             for (int j = 0; j < 10; j++)
                             {
-                                palabras [i,j] = line; 
+                                palabras[i, j] = line;
                             }
                         }
                         contador++;
@@ -76,27 +76,28 @@ namespace Leer
         public int numLinea()
         {
             int contador = 0;
-            using (StreamReader sr = new StreamReader("./../../Text.txt"))
+            using (StreamReader sr = new StreamReader("Text.txt"))
+            {
+                String line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    String line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        contador++;
-                    }
-    
+                    contador++;
                 }
+
+            }
             return contador;
-            
+
         }
 
-        public void imprimirArreglo (int x, string [,] palabras){
+        public void imprimirArreglo(int x, string[,] palabras)
+        {
 
             for (int i = 0; i < x; i++)
             {
-                Console.WriteLine("{0}",i);
+                Console.WriteLine("{0}", i);
                 for (int j = 0; j < 1; j++)
                 {
-                    Console.WriteLine("{0}",palabras [i,j]);
+                    Console.WriteLine("{0}", palabras[i, j]);
                 }
             }
             Console.ReadLine();
