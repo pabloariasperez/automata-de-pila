@@ -42,7 +42,7 @@ namespace Leer
             
             this.elementoActual = palabra.Pop();
             letras = palabra.ToArray();
-            Console.Write("(" + this.estadoActual + ",");
+            Console.Write("(" + this.estadoActual + ", ");
             foreach (char c in letras)
             {
                 Console.Write(c + " ");
@@ -51,7 +51,7 @@ namespace Leer
             pila = pilaDeAutomata.ToArray();
             foreach (char c in pila)
             {
-                Console.Write(c + ",");
+                Console.Write(c + " ");
             }
             Console.Write(") |- ");
 
@@ -123,16 +123,16 @@ namespace Leer
                             }
 
                             letras = palabra.ToArray();
-                            Console.Write("(" + this.estadoActual + "," );
+                            Console.Write("(" + this.estadoActual + ", " );
                             foreach (char c in letras)
                             {
                                 Console.Write(c + " ");
                             }
-                            Console.Write(",");
+                            Console.Write(", ");
                             pila = pilaDeAutomata.ToArray();
                             foreach (char c in pila)
                             {
-                                Console.Write(c + ",");
+                                Console.Write(c + " ");
                             }
                             Console.Write(") |- ");
                             
@@ -154,13 +154,14 @@ namespace Leer
                     }
                 }
 
-                if (    this.estadosManager.estadosFinales.contengoA(this.estadoActual) == true &&
+                if (this.estadosManager.estadosFinales.contengoA(this.estadoActual) == true &&
                         palabra.Count == 0 &&
                         this.pilaDeAutomata.Count == 0)
                 {
                     seAceptaLaPalabra = true;
                     break;
                 }
+                
             }
 
             Console.WriteLine();
