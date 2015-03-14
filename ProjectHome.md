@@ -1,0 +1,1 @@
+El programa recibirá un archivo con la información del autómate de pila y lo interpretará para ver si es válido.
